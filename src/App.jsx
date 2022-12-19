@@ -8,15 +8,15 @@ import './App.css';
 const App = () => {
   return(
     <>
-      <div className="App">
+      {/* <div className="App">
         <div className="gradient__bg">
           <Navbar/>
         </div>
-      </div>
+      </div> */}
       <Routes>
         <Route path="/">
           <Route path="" element={<Universities/>} />
-          <Route path="aboutus" element={<Aboutus/>} />
+          {/* <Route path="aboutus" element={<Aboutus/>} /> */}
           <Route path="*" element={<div>Not Found</div>} />
         </Route>
       </Routes>

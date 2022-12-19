@@ -1,7 +1,8 @@
 import React from "react"
 import { useEffect } from "react";
 import { useState } from "react";
-import { FormControl, InputLabel,Select,MenuItem,Switch,FormControlLabel,Button,ButtonGroup} from "@mui/material";
+import { FormControl, InputLabel,Select,MenuItem} from "@mui/material";
+import {Table,TableBody,TableCell,TableContainer,TableHead,TableRow,Paper} from '@mui/material';
 import './universities.css';
 
 const SortTypes = {
@@ -12,7 +13,7 @@ const SortTypes = {
 
 
 const Universities = () => {
-  const [universities,setUniversities] = useState(null);
+  const [universities,setUniversities] = useState([]);
   const [sortType,setSortType] = useState(SortTypes.ByName);
 
 
@@ -45,8 +46,8 @@ const Universities = () => {
   },[sortType]);
   
   return (
-    <div position="absolute">
-      <div align="center">
+    <div>
+      <div align="left" style={{marginTop:"2rem",padding:"0 15% 0 15%"}}>
         <FormControl size="medium">
           <InputLabel id="demo-simple-select-label">Type Of Sort</InputLabel>
           <Select sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}}
@@ -56,42 +57,49 @@ const Universities = () => {
             label="Type Of Sort"
             onChange={sT}
           >
-            <MenuItem sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} value={SortTypes.ByDate}>Sort By Date</MenuItem>
-            <MenuItem sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} value={SortTypes.ByTeam}>Sort By Team</MenuItem>
-            <MenuItem sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} value={SortTypes.ById}>Sort By Id</MenuItem>
+            <MenuItem sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} value={SortTypes.ByName}>Sort By Name</MenuItem>
+            <MenuItem sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} value={SortTypes.ByIndex}>Sort By Index</MenuItem>
+            <MenuItem sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} value={SortTypes.ByPrice}>Sort By Price</MenuItem>
           </Select>
         </FormControl>
       </div>
-      <div align = "center">
-        {MultipleSelectChip(teams,teamsForSort,setTeamsForSort)}
-      </div>
-      <div align="center">
-        <FormControlLabel sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}}
-        control=
-          {<Switch 
-            checked={bothTeam}
-            onChange={handleChange}
-            inputProps={{ 'aria-label': 'controlled' }}
-          />} label="Both Team"/>
-      </div>
-      <div>
-        {matches && (
-          matches.map(match => (Match_block(match)))
-        )}
-      </div>
-      <div className="csgo__matches_pagination">
-        <ButtonGroup
-          size="medium" 
-          aria-label="medium outlined button group"
-        >
-          <Button onClick={() => setOffset(offset-30)}>
-            Prev
-          </Button>
-          <Button onClick={() => setOffset(offset+30)}>
-            Next
-          </Button>
-        </ButtonGroup>
-      </div>
+      <div style={{marginTop:"2rem",padding:"0 15% 0 15%"}}>
+        <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 400}} size="small" aria-label="a dense table" className="university__table">
+          <TableHead>
+            <TableRow>
+              <TableCell sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} align="right">index</TableCell>
+              <TableCell sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} align="right">name</TableCell>
+              <TableCell sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} align="right">location</TableCell>
+              <TableCell sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} align="right">rank</TableCell>
+              {/* <TableCell sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} align="center">description</TableCell> */}
+              <TableCell sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} align="right">tuition_and_fees</TableCell>
+              <TableCell sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} align="right">in_state</TableCell>
+              <TableCell sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} align="right">undergrad_enrollment</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {universities.map((university) => (
+              <TableRow
+                key={university.index}
+                sx={{ '&:last-child td, &:last-child th': { border: 0 }}}
+              >
+                <TableCell sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} component="th" scope="row">
+                  {university.index}
+                </TableCell>
+                <TableCell sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} align="right">{university.name}</TableCell>
+                <TableCell sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} align="right">{university.location}</TableCell>
+                <TableCell sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} align="right">{university.rank}</TableCell>
+                {/* <TableCell sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} align="right">{university.description}</TableCell> */}
+                <TableCell sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} align="right">{university.tuition_and_fees}</TableCell>
+                <TableCell sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} align="right">{university.in_state}</TableCell>
+                <TableCell sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} align="right">{university.undergrad_enrollment}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </div>
   </div>
   )
 }

@@ -1,4 +1,4 @@
-import React from "react";
+/* import React from "react";
 import './aboutus.css';
 
 import vk_logo from '../../assets/vklogo.png';
@@ -74,3 +74,4 @@ export default Aboutus
 
 
 
+ */

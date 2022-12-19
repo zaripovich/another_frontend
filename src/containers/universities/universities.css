@@ -1,0 +1,41 @@
+
+
+
+.university_info_block{
+  position: relative;
+  margin-top: 1rem;
+}
+
+.university_info_table{
+  position: relative;
+  margin-top: 2rem;
+}
+
+.university_del{
+  position: relative;
+  margin:1rem;
+}
+
+.university_info_t1{
+  width: 25%;
+  position: relative;
+  margin-right: 1rem;
+}
+
+.university_info_t2{
+  width: 25%;
+  position: relative;
+  margin-left:  1rem;
+}
+
+.university_info_score{
+  position: relative;
+  margin-left:1rem;
+  margin-right:1rem;
+}
+
+
+.university__table {
+  font-family: var(--font-family);
+  background: #040C18;
+}
