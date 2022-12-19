@@ -1,11 +1,20 @@
+import React from "react"
+import { useEffect } from "react";
+import { useState } from "react";
+import { FormControl, InputLabel,Select,MenuItem,Switch,FormControlLabel,Button,ButtonGroup} from "@mui/material";
+import './universities.css';
+
+const SortTypes = {
+  ByName:0,
+  ByIndex:1,
+  ByPrice:2
+}
+
 
 const Universities = () => {
-  const [matches,setMatches] = useState(null);
-  const [offset,setOffset] = useState(0);
-  const [bothTeam, setBothTeam] = useState(false);
-  const [sortType,setSortType] = useState(SortTypes.ByDate);
-  const [teamsForSort,setTeamsForSort] = useState([]);
-  const [teams,setTeams] = useState([]);
+  const [universities,setUniversities] = useState(null);
+  const [sortType,setSortType] = useState(SortTypes.ByName);
+
 
   const sT = (value) => {
     console.info(`value = `,parseInt(value.target.value,10));
@@ -14,45 +23,26 @@ const Universities = () => {
 
   
 
-  const handleChange = () => {
-    setBothTeam(!bothTeam);
-  };
 
   useEffect(() => {
-    if(offset<0){
-      setOffset(0);
-    }
     const requestOptions = {
       method: 'POST',
       headers: { 
         'Content-Type': 'text/plain'},
       body: JSON.stringify({
-        "count": 30,
-        "offset": offset,
-        "sort_type": sortType,
-        "teams_for_sort":teamsForSort,
-        "both_team":bothTeam
+        "sort_type": sortType
       })
     };
-    fetch('http://127.0.0.1:8000/getMatches',requestOptions)
+    fetch('http://127.0.0.1:8000/getUniversities',requestOptions)
     .then((response) => response.json())
     .then((data) => {
       if(data['status'] === 'ok'){
-        setMatches(data["matches"]);
+        setUniversities(data["universities"]);
       }else{
         console.error('Error:', data['description']);
       }
     })
-    fetch('http://127.0.0.1:8000/getTeams')
-    .then((response) => response.json())
-    .then((data) => {
-      if(data['status'] === 'ok'){
-        setTeams(data["teams"]);
-      }else{
-        console.error('Error:', data['description']);
-      }
-    })
-  },[offset,bothTeam,teamsForSort,sortType]);
+  },[sortType]);
   
   return (
     <div position="absolute">
