@@ -36,6 +36,10 @@
 
 
 .university__table {
-  font-family: var(--font-family);
-  background: #040C18;
+  background: #fef4ed;
+  border-radius: 12px;
+}
+
+.university__table_block {
+  background: linear-gradient(25deg, #fed495, #f2ab83);
 }

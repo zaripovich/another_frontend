@@ -1,19 +1,17 @@
-/* import React from "react";
+import React from "react";
 import './navbar.css';
-import logo from '../../assets/logo.png';
+import { Link } from "react-router-dom";
+import logo from "../../assets/logo.png";
 const Navbar = () => {
   return(
-    <div className="csgo__navbar">
-      <div className="csgo__navbar-links">
-        <div className="csgo__navbar-links_logo">
-          <img src={logo} alt="logo"/>
+    <nav class="navbar">
+      <div id="trapezoid">
+        <img src={logo} alt="logo" class="logo"/>
+        <Link to="aboutus" className="aboutUs">О нас</Link>
+        <Link to="home" className="expandHome">О проекте</Link>
+        <Link to="" className="rating">Рейтинг</Link>
         </div>
-        <div className="csgo__navbar-links_container">
-          <p><a href="/">Matches</a></p>
-          <p><a href="/aboutus">About Us</a></p>
-        </div>
-      </div>
-    </div>
+    </nav>
   )
 }
-export default Navbar */
+export default Navbar

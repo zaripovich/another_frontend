@@ -1,6 +1,6 @@
 import React from "react"
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect} from "react";
+import { useState} from "react";
 import { FormControl, InputLabel,Select,MenuItem} from "@mui/material";
 import {Table,TableBody,TableCell,TableContainer,TableHead,TableRow,Paper} from '@mui/material';
 import './universities.css';
@@ -46,20 +46,20 @@ const Universities = () => {
   },[sortType]);
   
   return (
-    <div>
+    <div className="university__table_block">
       <div align="left" style={{marginTop:"2rem",padding:"0 15% 0 15%"}}>
         <FormControl size="medium">
-          <InputLabel id="demo-simple-select-label">Type Of Sort</InputLabel>
-          <Select sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}}
+          <InputLabel id="demo-simple-select-label">Типы сортировки</InputLabel>
+          <Select sx={{color:"#000000",fontSize:"1.25rem"}}
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             value={sortType}
-            label="Type Of Sort"
+            label="Типы сортировки"
             onChange={sT}
           >
-            <MenuItem sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} value={SortTypes.ByName}>Sort By Name</MenuItem>
-            <MenuItem sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} value={SortTypes.ByIndex}>Sort By Index</MenuItem>
-            <MenuItem sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} value={SortTypes.ByPrice}>Sort By Price</MenuItem>
+            <MenuItem sx={{color:"#000000",fontSize:"1.25rem"}} value={SortTypes.ByName}>По имени</MenuItem>
+            <MenuItem sx={{color:"#000000",fontSize:"1.25rem"}} value={SortTypes.ByIndex}>По индексу</MenuItem>
+            <MenuItem sx={{color:"#000000",fontSize:"1.25rem"}} value={SortTypes.ByPrice}>По цене обучения</MenuItem>
           </Select>
         </FormControl>
       </div>
@@ -68,14 +68,13 @@ const Universities = () => {
         <Table sx={{ minWidth: 400}} size="small" aria-label="a dense table" className="university__table">
           <TableHead>
             <TableRow>
-              <TableCell sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} align="right">index</TableCell>
-              <TableCell sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} align="right">name</TableCell>
-              <TableCell sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} align="right">location</TableCell>
-              <TableCell sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} align="right">rank</TableCell>
-              {/* <TableCell sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} align="center">description</TableCell> */}
-              <TableCell sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} align="right">tuition_and_fees</TableCell>
-              <TableCell sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} align="right">in_state</TableCell>
-              <TableCell sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} align="right">undergrad_enrollment</TableCell>
+              <TableCell sx={{color:"",fontSize:"1.25rem"}} align="right">index</TableCell>
+              <TableCell sx={{color:"#000000",fontSize:"1.25rem"}} align="right">name</TableCell>
+              <TableCell sx={{color:"#000000",fontSize:"1.25rem"}} align="right">location</TableCell>
+              <TableCell sx={{color:"#000000",fontSize:"1.25rem"}} align="right">rank</TableCell>
+              <TableCell sx={{color:"#000000",fontSize:"1.25rem"}} align="right">tuition_and_fees</TableCell>
+              <TableCell sx={{color:"#000000",fontSize:"1.25rem"}} align="right">in_state</TableCell>
+              <TableCell sx={{color:"#000000",fontSize:"1.25rem"}} align="right">undergrad_enrollment</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -84,16 +83,15 @@ const Universities = () => {
                 key={university.index}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 }}}
               >
-                <TableCell sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} component="th" scope="row">
+                <TableCell sx={{color:"#000000",fontSize:"1.25rem"}} component="th" scope="row">
                   {university.index}
                 </TableCell>
-                <TableCell sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} align="right">{university.name}</TableCell>
-                <TableCell sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} align="right">{university.location}</TableCell>
-                <TableCell sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} align="right">{university.rank}</TableCell>
-                {/* <TableCell sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} align="right">{university.description}</TableCell> */}
-                <TableCell sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} align="right">{university.tuition_and_fees}</TableCell>
-                <TableCell sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} align="right">{university.in_state}</TableCell>
-                <TableCell sx={{color:"#D4D4DC",fontSize:"1.25rem",fontFamily:"Russo One"}} align="right">{university.undergrad_enrollment}</TableCell>
+                <TableCell sx={{color:"#000000",fontSize:"1.25rem"}} align="right">{university.name}</TableCell>
+                <TableCell sx={{color:"#000000",fontSize:"1.25rem"}} align="right">{university.location}</TableCell>
+                <TableCell sx={{color:"#000000",fontSize:"1.25rem"}} align="right">{university.rank}</TableCell>
+                <TableCell sx={{color:"#000000",fontSize:"1.25rem"}} align="right">{university.tuition_and_fees}</TableCell>
+                <TableCell sx={{color:"#000000",fontSize:"1.25rem"}} align="right">{university.in_state}</TableCell>
+                <TableCell sx={{color:"#000000",fontSize:"1.25rem"}} align="right">{university.undergrad_enrollment}</TableCell>
               </TableRow>
             ))}
           </TableBody>
